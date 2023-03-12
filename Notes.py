@@ -2,6 +2,7 @@
 import os
 from Note import Note
 
+
 class Notes():
 
     def __init__(self):
@@ -52,7 +53,6 @@ class Notes():
                     id = int(i.partition(';')[0])
             return id + 1
 
-
     def delete_note(self, idx):
         with open("file_notes.csv", "r") as f:
             lines = f.readlines()
@@ -62,7 +62,6 @@ class Notes():
                     f.write(line)
                 if line.partition(';')[0] in str(idx):
                     print('Заметка удалена')
-
 
     def modified_note(self, idx, note):
         with open("file_notes.csv", "r") as f:
@@ -80,7 +79,7 @@ class Notes():
             notes = []
             for i in file.readlines():
                 notes.append(Note(i.split(';')[0], i.split(';')[1], i.split(';')[2], i.split(';')[3], i.split(';')[4]))
-            notes.sort(key=lambda Note: Note.creat_data  , reverse=bool)
+            notes.sort(key=lambda Note: Note.creat_data, reverse=bool)
             notes.sort(key=lambda Note: Note.creat_time, reverse=bool)
             for s in notes:
                 print('ID:', s.id, '\n')
